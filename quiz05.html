@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let div, id, pwd, pwd_check, name; // 공통되는 변수는 하나로, body태그에 onload 써줘야함
+        function init(){
+            id = document.getElementById("id");
+            pwd = document.getElementById("pwd");
+            pwd_check = document.getElementById("pwd_check");
+            name = document.getElementById("name");
+            div = document.getElementById("msg");
+        }
+        function id_check(){
+            const saveId = "javascript";
+            // const id = document.getElementById("id");
+            // const div = document.getElementById("msg");
+
+            if(id.value.length > 3){
+                if(saveId === id.value){
+                    console.log("존재")
+                    div.innerHTML = "존재하는 id입니다"
+                }else{
+                    console.log("가입 가능")
+                    div.innerHTML = "가입 가능한 id입니다"
+                }
+            }else{
+                    console.log("길이 짧음")
+                    div.innerHTML = "길이가 짧습니다(4자이상)"
+            }
+        }
+        function pwdCheck(){
+            // const pwd = document.getElementById("pwd");
+            // const pwd_check = document.getElementById("pwd_check");
+            // const div = document.getElementById("msg");
+            
+            if(pwd.value == pwd_check.value){
+                console.log("일치")
+                div.innerHTML = "일치합니다"
+            }else{
+                console.log("불일치")
+                div.innerHTML = "비밀번호 일치하지 않음"
+                pwd.value = ""
+                pwd_check.value = ""
+                pwd.focus();
+            }
+        }
+        function btn(){
+            // const id = document.getElementById("id");
+            // const pwd = document.getElementById("pwd");
+            // const pwd_check = document.getElementById("pwd_check");
+            // const name = document.getElementById("name");
+            // const div = document.getElementById("msg");
+            div.innerHTML = `
+                <h3>입력 데이터</h3>
+                id : <b>${id.value}</b><br>
+                pwd : <b>${pwd.value}</b><br>
+                pwd_check : <b>${pwd_check.value}</b><br>
+                name : <b>${name.value}</b>
+            `
+        }
+    </script>
+</head>
+<body onload="init()">
+    <input type ="text" oninput="id_check()" id="id" placeholder="input id"><br>
+    <input type ="text" id="pwd" placeholder="input password"><br>
+    <input type ="text" onchange="pwdCheck()" id="pwd_check" placeholder="password check"><br>
+    <input type ="text" id="name" placeholder="input name"><br>
+    <div id="msg"></div>
+    <button onclick="btn()">가입</button>
+</body>
+</html>
