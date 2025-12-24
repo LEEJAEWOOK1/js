@@ -53,13 +53,28 @@
             // const pwd_check = document.getElementById("pwd_check");
             // const name = document.getElementById("name");
             // const div = document.getElementById("msg");
-            div.innerHTML = `
-                <h3>입력 데이터</h3>
-                id : <b>${id.value}</b><br>
-                pwd : <b>${pwd.value}</b><br>
-                pwd_check : <b>${pwd_check.value}</b><br>
-                name : <b>${name.value}</b>
-            `
+            
+            if(id.value == ""){
+                div.innerHTML = "id 필수 항목"
+                id.focus();
+            }else if(pwd.value == ""){
+                div.innerHTML = "pwd 필수 항목"
+                pwd.focus();
+            }else if(pwd_check.value == ""){
+                div.innerHTML = "pwd_check 필수 항목"
+                pwd_check.focus();
+            }else if(name.value == ""){
+                div.innerHTML = "name 필수 항목"
+                name.focus();
+            }else{
+                div.innerHTML = `
+                    <h3>입력 데이터</h3>
+                    id : <b>${id.value}</b><br>
+                    pwd : <b>${pwd.value}</b><br>
+                    pwd_check : <b>${pwd_check.value}</b><br>
+                    name : <b>${name.value}</b>
+                `
+            }
         }
     </script>
 </head>
