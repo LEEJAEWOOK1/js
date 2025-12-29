@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const test1 = () => {
+            const num = 100;
+            console.log(num)
+            const num1 = ["100", 100, "값", 1.111];
+                        //  0     1    2      3
+            console.log(num1)
+            console.log(num1[0])
+            num1[0] = "다른값"
+            console.log(num1[0])
+
+            console.log(num1[3])
+            console.log(num1.length)
+            console.log(num1)
+            for(let i = 0; i < num1.length; i++){
+                //console.log("i : ", i)
+                console.log(`num1 ${i} : ${num1[i]}`)
+            }
+        }
+        const test2 = () => {
+            const arr = ["내용1", "내용2", "내용3"]
+            console.log("배열 type : ", typeof arr);
+            const str1 = arr.join() //배열의 모든 요소를 하나의 문자열로 합쳐준다.
+            console.log("배열 : ", arr);
+            console.log("str1 type : ", typeof str1);
+            console.log("str1 : ", str1);
+            // ["내용1", "내용2", "내용3"]
+            console.log("배열[0] : ", arr[0]);
+            // "내용1,내용2,내용3"
+            console.log("str1[0] : ", str1[0]);
+
+            const str2 = arr.join("-")
+            console.log("str2 : ", str2);
+        }
+        const test3 = () => {
+            let arr = [111,222,333]
+            console.log(`기본 배열 : ${arr}`)
+            arr[3] = "값 추가"
+            console.log(`기본 배열 : ${arr}`)
+
+            arr.push("값1", "값2")  //배열 뒤에 요소 추가
+            console.log(`push : ${arr}`)
+
+            arr.pop()               //배열 마지막 요소 제거
+            console.log(`pop : ${arr}`)
+
+            arr.unshift("v1", "v2") // 배열 앞에 요소 추가
+            console.log(`unshift : ${arr}`)
+
+            arr.shift()             //배열 첫번째 요소 제거
+            console.log(`shift : ${arr}`)
+
+            const arr2 = ["aaa", "bbb"]
+            // arr = v2,111,222,333,값 추가,값1,"aaa","bbb"
+            const result = arr.concat(arr2) //배열을 합친다. 문자열로 풀어서 가져온다.
+            console.log("concat", result)
+            // arr = v2,111,222,333,값 추가,값1,"aaa","bbb"
+            arr.push(arr2) //배열 자체를 가져온다.
+            // arr = [v2,111,222,333,값 추가,값1,["aaa", "bbb"]]
+            console.log("push", arr) // ``로 출력하면 문자열로 풀어서 출력, 그냥 출력하면 형태 그대로 출력
+        }
+        const test4 = () => {
+            const arr = [111,222,333]
+            arr.forEach(printArr) //함수가 반복적으로 동작(배열의 각 요소모다 한번씩 실행)
+            /*
+            for(let i = 0; i<arr.length; i++){
+                console.log(i, arr[i])
+            }
+            */
+            arr.forEach(
+                function printArr(item, index){
+                    console.log(`1데이터 ${index} : ${item}`)
+                }
+            )
+            arr.forEach(
+                (item, index) => {
+                    console.log(`2데이터 ${index} : ${item}`)
+                }
+            )
+        }
+        function printArr(item, index){
+            console.log(`데이터 ${index} : ${item}`)
+        }
+        const test5 = () => {
+            const arr = [111,222,333]
+            const newArr = arr.map(mapTest) //return한 값을 모아서 새 배열을 만들어준다.
+            console.log(newArr)
+
+            const newArr2 = arr.map(
+                (v) => {
+                    return v * 100;
+                }
+            );
+            console.log(newArr2)
+
+            const newArr3 = arr.map(
+                (v) =>  v * 100    
+            );
+            console.log(newArr3)
+        }
+        function mapTest(value){
+            return value * 10;
+        }
+    </script>
+</head>
+<body onload="test5()">
+    
+</body>
+</html>
