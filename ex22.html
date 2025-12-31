@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const test01 = () => {
+            let list01 = [1, 2, 3] //배열 -> []로
+            console.log("변경 전 list : ", list01)
+            //let list02 = list01; //주소(위치 정보)만 대입, 같은 주소 공간을 참조한다.(얕은복사)
+            //let list02 = [list01[0], list01[1], list01[2]] //데이터 자체를 새롭게 만드는 방식, 새로운 공간을 만들어서 새로운 배열을 만들고 데이터를 복사(깊은복사)
+            let list02 = [ ...list01] // 깊은복사 시 ...으로
+            // list02.push(list01[0]); 
+            // list02.push(list01[1]); 
+            // list02.push(list01[2]);
+
+            console.log("변경 전 list02 : ", list02)
+
+            list02[1] = 1234;
+            list02.push("새로운 데이터")
+
+            console.log("변경 후 list01 : ", list01)
+            console.log("변경 후 list02 : ", list02)
+
+            let dic01 = {id:"aaa", name:"홍길동"} //key: value -> {}로
+            //let dic02 = dic01
+            let dic02 = {...dic01}
+            dic01['id'] = "bbb"
+
+            console.log("변경 후 dic01 : ", dic01)
+            console.log("변경 후 dic02 : ", dic02)
+        }
+        const btn = () => {
+            const div = document.getElementById("div");
+            const img = div.firstElementChild //첫번째 요소를 가져온다.
+            img.src = "images/jol03.png"
+            
+            const img2 = img.cloneNode(true); //깊은복사, 이미 존재하는 요소를 그대로 복사해서 새로운 요소를 만든다.
+            //const img2 = img; //얕은복사
+            img2.width = "100";
+
+            console.log(img)
+            console.log(img2)
+
+            div.lastElementChild.appendChild(img2) // 마지막 요소를 가져온다.
+        }
+    </script>
+    <style>
+        #div div {width: 100px; height: 100px; border: 1px solid; background-color: gold;}
+        img {width: 50px; height: 50px;}
+    </style>
+</head>
+<body onload="test01()">
+    <div id="div">
+        <img src="images/jol01.png" >
+        <div></div>
+    </div>
+    <button type="button" onclick="btn()">클릭</button>
+</body>
+</html>
